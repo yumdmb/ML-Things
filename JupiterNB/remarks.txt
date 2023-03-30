@@ -1,0 +1,6 @@
+epochs, rmse, history = train_model(my_model, train_df, my_feature, 
+                                    my_label, epochs, batch_size, 
+                                    validation_split)
+
+plot_the_loss_curve(epochs, history["root_mean_squared_error"], 
+                    history["val_root_mean_squared_error"])

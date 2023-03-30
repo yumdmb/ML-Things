@@ -1,0 +1,146 @@
+Hyperparameter tuning 
+
+Rules of thumb:
+
+1)Training loss should steadily decrease, steeply at first, and then more slowly until the slope of the curve reaches or approaches zero.
+
+2)If the training loss does not converge, train for more epochs.
+
+3)If the training loss decreases too slowly, increase the learning rate. Note that setting the learning rate too high may also prevent training loss from converging.
+
+4)If the training loss varies wildly (that is, the training loss jumps around), decrease the learning rate.
+
+5)Lowering the learning rate while increasing the number of epochs or the batch size is often a good combination.
+
+6)Setting the batch size to a very small batch number can also cause instability. 7)First, try large batch size values. Then, decrease the batch size until you see degradation.
+
+7)For real-world datasets consisting of a very large number of examples, the entire dataset might not fit into memory. In such cases, you'll need to reduce the batch size to enable a batch to fit into memory.
+
+8)For real-world datasets consisting of a very large number of examples, the enitre dataset mihgt not fit into memory. In such 
+
+9) synthentic feature : combine both unuseful features such as the ratio between both features
+
+Remember: the ideal combination of hyperparameters is data dependent, so you must always experiment and verify.
+
+
+
+correlation matrix ; 
+
++1.0 -> one attribute rises, other attribute also rises
+-1.0 -> one attribute not rises , other attrivbutes also not rises 
+
+
+one attributes rise other attributes rise also 
+
+
+
+
+GENERALIZATION : 
+
+The ML fine print -> three basic assumptions 
+
+- examples are draw independetly and identically 
+-the distribution is stationary 
+-we draw examples from partitions from the same distribution
+
+numpy np
+pandas pd
+tensorlfow tf
+
+
+def train_model(model, df, feature, label, my_epochs, my_bastch
+
+
+my_feature = "median_income"
+my_label = "median_house_value"
+
+
+ Some of the problems below are best addressed using a supervised learning algorithm, and 
+the others with an unsupervised learning algorithm. Which of the following would you 
+apply supervised learning to? (Select all that apply.) In each case, assume some appropriate 
+dataset is available for your algorithm to learn from.
+
+(i)Take a collection of 1000 essays written on the US Economy, and find a way 
+to automatically group these essays into a small number of groups of essays 
+that are somehow "similar" or "related". 
+(ii)Given 50 articles written by male authors, and 50 articles written by female 
+authors, learn to predict the gender of a new manuscript's author (when the 
+identity of this author is unknown). 
+(iii)Examine a large collection of emails that are known to be spam email, to 
+discover if there are sub-types of spam mail.
+(iv)Examine a web page, and classify whether the content on the web page 
+should be considered "child friendly" (e.g., non-pornographic, etc.) or 
+"adult."
+
+
+
+
+Based on the given problems, the following are the ones that can be best addressed using a supervised learning algorithm:
+
+(ii) Given 50 articles written by male authors, and 50 articles written by female authors, learn to predict the gender of a new manuscript's author (when the identity of this author is unknown).
+
+(iv) Examine a web page and classify whether the content on the web page should be considered "child friendly" (e.g., non-pornographic, etc.) or "adult."
+
+In both of these problems, there are labeled examples available in the form of the gender of the author and the classification of web pages as child-friendly or adult. This makes it possible to train a supervised learning algorithm to predict the gender of a new author or classify a new web page based on its content.
+
+For the other two problems, unsupervised learning would be a better fit:
+
+(i) Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number of groups of essays that are somehow "similar" or "related."
+
+(iii) Examine a large collection of emails that are known to be spam email, to discover if there are sub-types of spam mail.
+
+In the case of grouping essays or discovering sub-types of spam mail, there is no labeled data available. Unsupervised learning can help in finding patterns and similarities in the data without requiring any labeled examples.
+
+
+
+
+Good way to ensure the validation set is similar to the training set is the huffle the examples in the training set
+
+shuffled_train_df= train_df.reinex(np.random.permutation(train_df.index))
+
+
+
+MSE (Mean Squared Error) and MAE (Mean Absolute Error) are both commonly used metrics in machine learning and data analysis to evaluate the performance of a model. The main difference between the two is in how they measure the difference between the predicted and actual values.
+
+MSE measures the average squared difference between the predicted and actual values. It is calculated by taking the sum of the squared differences between the predicted and actual values, and then dividing by the number of data points. The resulting value gives an idea of the overall magnitude of the errors in the predictions.
+
+MAE, on the other hand, measures the average absolute difference between the predicted and actual values. It is calculated by taking the sum of the absolute differences between the predicted and actual values, and then dividing by the number of data points. MAE gives an idea of the average magnitude of the errors in the predictions.
+
+In general, MSE is more sensitive to large errors because of the squaring operation, while MAE is more robust to outliers because it uses absolute differences. MSE is often used in situations where larger errors are particularly undesirable, while MAE is used when the focus is on the average magnitude of errors.
+
+
+---------------------------------------------------------------------------------------
+
+Choosing the appropriate metrics for evaluating a machine learning model depends on the specific problem you are trying to solve and the nature of the data. Here are some general guidelines for selecting metrics:
+
+Start with the problem: The choice of metrics should be driven by the problem you are trying to solve. Consider what is important to you or your stakeholders, whether it's accuracy, precision, recall, or some other measure. For example, in the case of credit card fraud detection, the most important metric may be the false positive rate, as incorrectly identifying a legitimate transaction as fraudulent can be more damaging than missing a fraudulent transaction.
+
+Consider the type of problem: The metrics you choose may also depend on whether the problem is a classification, regression, or clustering problem. For classification problems, common metrics include accuracy, precision, recall, F1-score, and area under the curve (AUC). For regression problems, common metrics include mean squared error (MSE), mean absolute error (MAE), and R-squared.
+
+Look at the data: The characteristics of your data may also influence the choice of metrics. For example, if your data is imbalanced, meaning that there are significantly more instances of one class than the other, accuracy may not be a good metric to use as it can be biased towards the majority class. In such cases, precision, recall, and F1-score may be more appropriate.
+
+Consider the trade-offs: Different metrics may have different trade-offs. For example, optimizing for accuracy may result in a model that has a high false positive rate, whereas optimizing for precision may result in a model that misses some true positives. It's important to consider these trade-offs and choose a metric that balances the desired outcome with the risks and costs associated with false positives and false negatives.
+
+Overall, the choice of metrics for evaluating a machine learning model is an important decision that should be made with careful consideration of the problem, the data, and the trade-offs involved.
+
+
+-------------------------------------------------------------------------------------------
+
+//How to choose between MAE and MSE
+
+The choice between using MAE (Mean Absolute Error) or MSE (Mean Squared Error) depends on the nature of the problem you are trying to solve and the specific context of your data. Here are some factors to consider when choosing between the two:
+
+Sensitivity to outliers: MSE is more sensitive to outliers than MAE because it involves squaring the errors. This means that a single large error can greatly increase the value of MSE, which may not be desirable in some cases. If your data contains outliers that you want to down-weight or ignore, MAE may be a better choice as it is less sensitive to outliers.
+
+Units of measurement: MSE has the advantage of preserving the units of the underlying data, because the errors are squared before being averaged. This can be useful if you need to maintain the original scale of the data. In contrast, MAE involves taking the absolute value of the errors, which can lead to a loss of units of measurement.
+
+Interpretability: MAE is generally easier to interpret than MSE, as it represents the average absolute error in the predictions. This can be helpful if you need to communicate the results to stakeholders who may not have a technical background. MSE, on the other hand, represents the average squared error in the predictions, which may not be as intuitive.
+
+Minimization objective: Depending on the problem you are solving, you may want to choose the metric that aligns with your minimization objective. For example, if you are using gradient descent to optimize a model, MSE may be a better choice as it has a smooth derivative, making it easier to optimize using gradient descent. In contrast, MAE has a non-smooth derivative at zero, which can make optimization more difficult.
+
+Overall, the choice between using MAE or MSE depends on the specific context of your data and the goals of your modeling task. It's important to consider the pros and cons of each metric and choose the one that best suits your needs.
+
+Overall, the choice between using MAE or MSE depends on the specific context of your data and the goals of your modeling task. It;s important to consider the pros and cons of each metrci and 
+
+
+scaledvalue=value-mean)/stddev
