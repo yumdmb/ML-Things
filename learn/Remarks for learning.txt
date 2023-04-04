@@ -142,5 +142,8 @@ Overall, the choice between using MAE or MSE depends on the specific context of 
 
 Overall, the choice between using MAE or MSE depends on the specific context of your data and the goals of your modeling task. It;s important to consider the pros and cons of each metrci and 
 
+----------------------------------
 
-scaledvalue=value-mean)/stddev
+bucketing 
+-converting a single feature into multiple binary features called buckets or bins, typically on a value range
+-the chopped feature is typically a continuous feature
