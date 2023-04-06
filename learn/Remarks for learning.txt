@@ -146,4 +146,4 @@ Overall, the choice between using MAE or MSE depends on the specific context of 
 
 bucketing 
 -converting a single feature into multiple binary features called buckets or bins, typically on a value range
--the chopped feature is typically a continuous feature
+-the chopped feature is typically a continuous feature 
